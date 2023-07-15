@@ -35,6 +35,9 @@ const survey = (state = { feeling: '', understand: '', support: '', comment: '' 
             comment: action.payload
         }
     }
+    if(action.type === 'CLEAR') {
+        return state = { feeling: '', understand: '', support: '', comment: '' }
+    }
     return state;
 }
 

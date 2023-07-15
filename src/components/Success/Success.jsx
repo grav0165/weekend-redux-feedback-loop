@@ -8,36 +8,35 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
-import './Comment.css'
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 const Success = () => {
 
+    // sourcing dispatch
+    const dispatch = useDispatch();
+
+    // sourcing history
+    const history = useHistory();
+
+    const handleNewFeedback = () => {
+        console.log('New feedback clicked');
+        dispatch({
+            type: 'CLEAR'
+        })
+    }
+
     return (
         <div className="review-card">
-            <Card sx={{ display: 'flex', width: '90%', flexDirection: 'column', justifyContent: 'space-between', alignContent: 'space-between', minHeight: 400, maxHeight: 500 }}>
+            <Card sx={{ display: 'flex', width: '90%', flexDirection: 'column', justifyContent: 'center', alignContent: 'center', alignItems: 'center', minHeight: 400, maxHeight: 500 }}>
             <Box>
                     <Typography gutterBottom variant="h4" sx={{ display: 'flex', justifyContent: 'center' }}>
-                        Review Your Feedback
-                    </Typography>
-
-                    <Typography>
-                        Feelings: {survey.feeling}
-                    </Typography>
-                    <Typography>
-                        Understanding: {survey.understand}
-                    </Typography>
-                    <Typography>
-                        Support: {survey.support}
-                    </Typography>
-                    <Typography>
-                        Comments: {survey.comment}
+                        Thank you!
                     </Typography>
                     </Box>
                     <CardActions sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
-                        <Button size="large" variant="contained" onClick={handleSubmit} >SUBMIT</Button>
+                        <Button size="large" variant="contained" onClick={handleNewFeedback} >Leave New Feedback</Button>
                     </CardActions>
             </Card>
         </div>
