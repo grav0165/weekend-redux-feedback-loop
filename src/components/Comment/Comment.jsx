@@ -44,7 +44,7 @@ const Comment = () => {
             <Card sx={{ display: 'flex', width: '90%', flexDirection: 'column', justifyContent: 'space-between', alignContent: 'space-between', minHeight: 400, maxHeight: 500 }}>
               
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+                        <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
                             Any comments you want to leave?
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
