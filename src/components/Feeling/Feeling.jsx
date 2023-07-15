@@ -20,7 +20,7 @@ const Feeling = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    // Array to use for drop down text field to use
+    // Array for drop down text field to use
     const dropDown = [1, 2, 3, 4, 5]
 
     // using state to keep track of input

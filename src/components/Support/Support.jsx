@@ -12,12 +12,16 @@ import './Support.css'
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import MenuItem from '@mui/material/MenuItem';
 
 const Support = () => {
 
     // sourcing history to go to next page
     const history = useHistory();
     const dispatch = useDispatch();
+
+    // Array for drop down text to use
+    const dropDown = [1, 2, 3, 4, 5]
 
     // using state to cover inputs
     const [ supportInput, setSupportInput ] = useState();
@@ -57,14 +61,19 @@ const Support = () => {
                             with 5 being the most
                         </Typography>
                             <TextField
-                                id="outlined-number"
-                                label="Support?"
-                                type="number"
-                                InputProps={{ inputProps: { min: 1, max: 5 } }}
+                                id="outlined-select-currency"
+                                select
+                                label="Select"
+                                defaultValue="1"
                                 onChange={handleSupportInput}
-                                required
-                                sx={{ width: 175 }}
-                            />
+                                sx={{ width: 175}}
+                            >
+                            {dropDown.map((option) => (
+                                <MenuItem key={option} value={option}>
+                                  {option}
+                                </MenuItem>
+                              ))}
+                              </TextField>
                     </CardContent>
                         <CardActions sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
                             <Button sx={{ display: 'flex', alignSelf: 'flex-end' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>
