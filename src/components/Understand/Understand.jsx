@@ -41,8 +41,7 @@ const Understand = () => {
 
     return (
         <div className='feeling-div'>
-            <div className='card-div'>
-                <Card sx={{ display: 'flex', minWidth: 300, maxWidth: 1400, minHeight: 400, maxHeight: 500 }}>
+                <Card sx={{ display: 'flex', width: '90%', flexDirection: 'column', justifyContent: 'space-between', alignContent: 'space-between', minHeight: 400, maxHeight: 500 }}>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div" sx={{display: 'flex', justifyContent: 'center'}}>
                             How well are you understanding the content?
@@ -53,7 +52,6 @@ const Understand = () => {
                         <Typography variant="body2" color="text.secondary">
                             5 being the most
                         </Typography>
-                        <div className='text-input'>
                             <TextField
                                 id="outlined-number"
                                 label="Understanding?"
@@ -61,17 +59,13 @@ const Understand = () => {
                                 InputProps={{ inputProps: { min: 1, max: 5 } }}
                                 onChange={handleUnderstandingInput}
                                 required
+                                sx={{ width: 175}}
                             />
-                        </div>
                     </CardContent>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                        <CardActions>
-                            <Button sx={{ display: 'flex', alignSelf: 'flex-end' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>
+                        <CardActions sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
+                            <Button sx={{ display: 'flex', alignSelf: 'flex-start' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>
                         </CardActions>
-                    </Box>
                 </Card>
-            </div>
-
         </div >
     )
 }

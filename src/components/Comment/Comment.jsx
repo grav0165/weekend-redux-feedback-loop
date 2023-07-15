@@ -19,17 +19,21 @@ const Comment = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [ commentInput, setCommentInput ] = useState();
+    // state to keep track of inputs
+    const [commentInput, setCommentInput] = useState();
 
+    // handler to track inputs
     const handleCommentInput = (event) => {
         setCommentInput(event.target.value)
     }
 
+    // No if statement on button, comments are not required, and blank entries are accepted
     const handleNext = () => {
         dispatch({
             type: 'COMMENT',
             payload: commentInput
         })
+        // Moving to review page to show all prior inputs
         history.push('/review')
     }
 
@@ -37,11 +41,11 @@ const Comment = () => {
 
     return (
         <div className='feeling-div'>
-            <div className='card-div'>
-                <Card sx={{ display: 'flex', minWidth: 300, maxWidth: 1400, minHeight: 400, maxHeight: 500 }}>
+            <Card sx={{ display: 'flex', width: '90%', flexDirection: 'column', justifyContent: 'space-between', alignContent: 'space-between', minHeight: 400, maxHeight: 500 }}>
+              
                     <CardContent>
-                        <Typography gutterBottom variant="h5" component="div" sx={{display: 'flex', justifyContent: 'center'}}>
-                           Any comments you want to leave?
+                        <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', justifyContent: 'center' }}>
+                            Any comments you want to leave?
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Scale of 1 to 5
@@ -49,23 +53,20 @@ const Comment = () => {
                         <Typography variant="body2" color="text.secondary">
                             with 5 being the most
                         </Typography>
-                        <div className='text-input'>
-                            <TextField
-                                id="outlined-number"
-                                label="Comment?"
-                                type="text"
-                                onChange={handleCommentInput}
-                            />
-                        </div>
+                        <TextField
+                            id="outlined-number"
+                            label="Comment?"
+                            type="text"
+                            onChange={handleCommentInput}
+                        />
                     </CardContent>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                        <CardActions>
-                            <Button sx={{ display: 'flex', alignSelf: 'flex-end' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>
-                        </CardActions>
-                    </Box>
-                </Card>
-            </div>
-        </div >
+             
+                <CardActions sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
+                    <Button sx={{ display: 'flex', alignSelf: 'flex-end' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>
+                </CardActions>
+            </Card>
+        </div>
+
     )
 }
 

@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
     INSERT INTO feedback ("feeling", "understanding", "support", "comments", "date")
     VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP);
     `;
-    pool.query(sqlQuery, [survey.feeling, survey.understanding, survey.support, survey.comments])
+    pool.query(sqlQuery, [survey.feeling, survey.understanding, survey.support, survey.comment])
     .then( result => {
         // console logging out information sent to database
         console.log('Added survey to database: ', survey);

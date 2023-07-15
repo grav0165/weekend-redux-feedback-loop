@@ -19,20 +19,24 @@ const Support = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    // using state to cover inputs
     const [ supportInput, setSupportInput ] = useState();
 
+    // input handler to track 
     const handleSupportInput = (event) => {
         setSupportInput(event.target.value)
     }
 
+    // if statement to prevent an empty submission to store
     const handleNext = () => {
         if (!supportInput) {
             alert('Please fill out the field')
         } else {
         dispatch({
-            type: 'FEELING',
+            type: 'SUPPORT',
             payload: supportInput
         })
+        // moving to next page after dispatch
         history.push('/comment')
     }
     }
@@ -41,8 +45,7 @@ const Support = () => {
 
     return (
         <div className='feeling-div'>
-            <div className='card-div'>
-                <Card sx={{ display: 'flex', minWidth: 300, maxWidth: 1400, minHeight: 400, maxHeight: 500 }}>
+                <Card sx={{ display: 'flex', width: '90%', flexDirection: 'column', justifyContent: 'space-between', alignContent: 'space-between', minHeight: 400, maxHeight: 500 }}>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div" sx={{display: 'flex', justifyContent: 'center'}}>
                            How well are you being supported?
@@ -53,7 +56,6 @@ const Support = () => {
                         <Typography variant="body2" color="text.secondary">
                             with 5 being the most
                         </Typography>
-                        <div className='text-input'>
                             <TextField
                                 id="outlined-number"
                                 label="Support?"
@@ -61,18 +63,14 @@ const Support = () => {
                                 InputProps={{ inputProps: { min: 1, max: 5 } }}
                                 onChange={handleSupportInput}
                                 required
+                                sx={{ width: 175 }}
                             />
-                        </div>
                     </CardContent>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                        <CardActions>
+                        <CardActions sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
                             <Button sx={{ display: 'flex', alignSelf: 'flex-end' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>
                         </CardActions>
-                    </Box>
                 </Card>
-            </div>
-
-        </div >
+        </div>
     )
 }
 

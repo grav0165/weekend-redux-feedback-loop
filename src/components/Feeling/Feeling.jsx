@@ -19,12 +19,15 @@ const Feeling = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
+    // using state to keep track of input
     const [ feelingInput, setFeelingInput ] = useState();
 
+    // input handler
     const handleFeelingInput = (event) => {
         setFeelingInput(event.target.value)
     }
 
+    // if statement to prevent empty submission to store (field required)
     const handleNext = () => {
         if (!feelingInput) {
             alert('Please fill out the field')
@@ -33,6 +36,7 @@ const Feeling = () => {
             type: 'FEELING',
             payload: feelingInput
         })
+        // history push to move to next page
         history.push('/understand')
         }
     }
@@ -41,8 +45,7 @@ const Feeling = () => {
 
     return (
         <div className='feeling-div'>
-            <div className='card-div'>
-                <Card sx={{ display: 'flex', minWidth: 300, maxWidth: 1400, minHeight: 400, maxHeight: 500 }}>
+                <Card sx={{ display: 'flex', width: '90%', flexDirection: 'column', justifyContent: 'space-between', alignContent: 'space-between', minHeight: 400, maxHeight: 500 }}>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div" sx={{display: 'flex', justifyContent: 'center'}}>
                             How are you feeling?
@@ -53,7 +56,6 @@ const Feeling = () => {
                         <Typography variant="body2" color="text.secondary">
                             with 5 being the best
                         </Typography>
-                        <div className='text-input'>
                             <TextField
                                 required
                                 id="outlined-number"
@@ -61,18 +63,13 @@ const Feeling = () => {
                                 type="number"
                                 InputProps={{ inputProps: { min: 1, max: 5 } }}
                                 onChange={handleFeelingInput}
-                                
+                                sx={{ width: 175}}
                             />
-                        </div>
                     </CardContent>
-                    <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                        <CardActions>
-                            <Button sx={{ display: 'flex', alignSelf: 'flex-end' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>
+                        <CardActions sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
+                            <Button sx={{ display: 'flex', alignSelf: 'flex-start' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>
                         </CardActions>
-                    </Box>
                 </Card>
-            </div>
-
         </div >
     )
 }

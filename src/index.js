@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 // Adding REDUCER to STORE information
-const survey = (state = { feeling: '', understanding: '', support: '', comments: '' }, action) => {
+const survey = (state = { feeling: '', understand: '', support: '', comment: '' }, action) => {
     if(action.type === 'FEELING') {
         return {
             ...state,
