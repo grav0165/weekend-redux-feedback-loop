@@ -4,8 +4,8 @@ import './index.css';
 import App from './components/App/App';
 
 // importing REDUX
-import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 
 // Adding REDUCER to STORE information
