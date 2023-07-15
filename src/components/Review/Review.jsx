@@ -8,13 +8,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
-import './Comment.css'
+import './Review.css'
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Review = () => {
 
+    const survey = useSelector(store => store.survey)
 
 
     return(
@@ -23,8 +25,18 @@ const Review = () => {
                 <Typography gutterBottom variant="h4" sx={{display: 'flex', justifyContent: 'center'}}>
                     Review Your Feedback
                 </Typography>
-                <Typography>
 
+                <Typography>
+                    Feelings: {survey.feeling}
+                </Typography>
+                <Typography>
+                    Understanding: {survey.understand}
+                </Typography>
+                <Typography>
+                    Support: {survey.support}
+                </Typography>
+                <Typography>
+                    Comments: {survey.comment}
                 </Typography>
             </Card>
         </div>

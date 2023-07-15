@@ -29,10 +29,10 @@ const survey = (state = { feeling: '', understanding: '', support: '', comments:
             support: action.payload
         }
     }
-    if(action.type === 'FEELING') {
+    if(action.type === 'COMMENT') {
         return {
             ...state,
-            feeling: action.payload
+            comment: action.payload
         }
     }
     return state;
