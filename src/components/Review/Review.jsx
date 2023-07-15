@@ -42,6 +42,7 @@ const Review = () => {
         .catch(error => {
             console.log('Error in adding survey in client: ', error);
         })
+        history.push('/success')
 
     }
 

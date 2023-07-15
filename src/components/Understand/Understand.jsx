@@ -53,14 +53,19 @@ const Understand = () => {
                             5 being the most
                         </Typography>
                             <TextField
-                                id="outlined-number"
-                                label="Understanding?"
-                                type="number"
-                                InputProps={{ inputProps: { min: 1, max: 5 } }}
-                                onChange={handleUnderstandingInput}
-                                required
+                                id="outlined-select-currency"
+                                select
+                                label="Select"
+                                defaultValue="1"
+                                onChange={handleFeelingInput}
                                 sx={{ width: 175}}
-                            />
+                                
+                            >
+                            {dropDown.map((option) => (
+                                <MenuItem key={option} value={option}>
+                                  {option}
+                                </MenuItem>
+                              ))}</TextField>
                     </CardContent>
                         <CardActions sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}>
                             <Button sx={{ display: 'flex', alignSelf: 'flex-start' }} size="large" variant="contained" endIcon={<SendIcon />} onClick={handleNext}>Next</Button>

@@ -25,6 +25,7 @@ const Success = () => {
         dispatch({
             type: 'CLEAR'
         })
+        history.push('/')
     }
 
     return (
