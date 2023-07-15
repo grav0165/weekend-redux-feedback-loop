@@ -8,33 +8,33 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
 import TextField from '@mui/material/TextField';
-import './Feeling.css'
+import './Understand.css'
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-const Feeling = () => {
+const Understand = () => {
 
     // sourcing history to go to next page
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const [ feelingInput, setFeelingInput ] = useState();
+    const [ understandingInput, setUnderstandingInput ] = useState();
 
-    const handleFeelingInput = (event) => {
-        setFeelingInput(event.target.value)
+    const handleUnderstandingInput = (event) => {
+        setUnderstandingInput(event.target.value)
     }
 
     const handleNext = () => {
-        if (!feelingInput) {
+        if (!understandingInput) {
             alert('Please fill out the field')
         } else {
         dispatch({
-            type: 'FEELING',
-            payload: feelingInput
+            type: 'UNDERSTAND',
+            payload: understandingInput
         })
-        history.push('/understand')
-        }
+        history.push('/support')
+    }
     }
 
 
@@ -45,23 +45,22 @@ const Feeling = () => {
                 <Card sx={{ display: 'flex', minWidth: 300, maxWidth: 1400, minHeight: 400, maxHeight: 500 }}>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div" sx={{display: 'flex', justifyContent: 'center'}}>
-                            How are you feeling?
+                            How well are you understanding the content?
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                             Scale of 1 to 5
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            with 5 being the best
+                            5 being the most
                         </Typography>
                         <div className='text-input'>
                             <TextField
-                                required
                                 id="outlined-number"
-                                label="Feeling?"
+                                label="Understanding?"
                                 type="number"
                                 InputProps={{ inputProps: { min: 1, max: 5 } }}
-                                onChange={handleFeelingInput}
-                                
+                                onChange={handleUnderstandingInput}
+                                required
                             />
                         </div>
                     </CardContent>
@@ -77,4 +76,4 @@ const Feeling = () => {
     )
 }
 
-export default Feeling;
+export default Understand;

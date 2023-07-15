@@ -6,6 +6,10 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 // importing components
 import Header from '../Header/Header';
 import Feeling from '../Feeling/Feeling';
+import Understand from '../Understand/Understand';
+import Support from '../Support/Support';
+import Comment from '../Comment/Comment';
+import Review from '../Review/Review';
 
 function App() {
 
@@ -13,8 +17,20 @@ function App() {
     <Router>
       <div className='App'>
         <Header />
-        <Route path='/'>
+        <Route path="/" exact>
           <Feeling />
+        </Route>
+        <Route path="/understand" exact>
+          <Understand />
+        </Route>
+        <Route path="/support">
+          <Support />
+        </Route>
+        <Route path="/comment">
+          <Comment />
+        </Route>
+        <Route path="/review">
+          <Review />
         </Route>
       </div>
     </Router>

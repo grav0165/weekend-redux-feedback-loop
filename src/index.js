@@ -10,6 +10,31 @@ import logger from 'redux-logger';
 
 // Adding REDUCER to STORE information
 const survey = (state = { feeling: '', understanding: '', support: '', comments: '' }, action) => {
+    if(action.type === 'FEELING') {
+        return {
+            ...state,
+            feeling: action.payload
+        }
+    }
+
+    if(action.type === 'UNDERSTAND') {
+        return {
+            ...state,
+            understand: action.payload
+        }
+    }
+    if(action.type === 'SUPPORT') {
+        return {
+            ...state,
+            support: action.payload
+        }
+    }
+    if(action.type === 'FEELING') {
+        return {
+            ...state,
+            feeling: action.payload
+        }
+    }
     return state;
 }
 
