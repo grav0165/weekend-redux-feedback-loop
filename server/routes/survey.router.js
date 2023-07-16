@@ -4,8 +4,8 @@ const pool = require('../modules/pool');
 
 // GET route for /survey (if stretch goal is achieved)
 router.get('/', (req, res) => {
-    const sqlText = `SELECT * FROM feedback ORDER BY data ASC;`;
-    pool.query(sqlText)
+    const sqlQuery = `SELECT * FROM feedback ORDER BY date ASC;`;
+    pool.query(sqlQuery)
     .then( result => {
         console.log('Got stuff back from database: ', result);
         res.send(result.rows);

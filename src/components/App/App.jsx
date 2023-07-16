@@ -18,30 +18,31 @@ import Admin from '../Admin/Admin';
 function App() {
 
   // Create useState for suverylist submitted
-  let[ surveyList, setSurveyList ] = useState([])
+  const [ surveyList, setSurveyList ] = useState([])
 
 
   // GET request to pull in all completed surveys from Database
   const getSurveys = () => {
     axios({
-      method: 'GET',
-      url: '/survey'
+      method: "GET",
+      url: "/survey",
     })
     .then( response => {
-      console.log('Response from database reviewed: ', response.data)
+      console.log('Response from database is: ', response)
       setSurveyList(response.data);
     })
-    .catch( error => {
-      console.log('Error in getting database information: ', error);
+    .catch(error => {
+      console.log('Error in client GET request: ', error);
     })
   }
 
+    // on load, get all guests
+    useEffect(() => {
+      getSurveys()
+    }, [])
+  
 
 
-  // on load, get all guests
-  useEffect(() => {
-    getSurveys()
-  }, [])
 
   return (
     <Router>
@@ -65,7 +66,7 @@ function App() {
         <Route path="/success">
           <Success />
         </Route>
-        <Route>
+        <Route path="/admin">
           <Admin surveyList={surveyList}/>
         </Route>
       </div>
