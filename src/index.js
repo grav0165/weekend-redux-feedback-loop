@@ -16,7 +16,7 @@ const survey = (state = { feeling: '', understand: '', support: '', comment: '' 
             feeling: action.payload
         }
     }
-
+    // Include different action types to submit information to that key of the object storing the survey
     if(action.type === 'UNDERSTAND') {
         return {
             ...state,
@@ -35,6 +35,7 @@ const survey = (state = { feeling: '', understand: '', support: '', comment: '' 
             comment: action.payload
         }
     }
+    // Clears all keys of the object upon submission to the database
     if(action.type === 'CLEAR') {
         return state = { feeling: '', understand: '', support: '', comment: '' }
     }
