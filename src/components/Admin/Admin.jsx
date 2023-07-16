@@ -17,7 +17,7 @@ const Admin = ({surveyList, handleDelete}) => {
   const MySwal = withReactContent(Swal);
   
 // Click handler to confirm to delete or not
-const handleClick = () => {
+const handleClick = (survey) => {
     MySwal.fire({
         title: "Do you want to confirm remove?",
         showDenyButton: true,
@@ -27,9 +27,9 @@ const handleClick = () => {
         if (result.isConfirmed) {   
           // handleDELETE
           handleDelete({
-            id: props.item.id,
+            id: survey.id,
           });
-          console.log(survey.id);
+          console.log('Survey id is: ', survey.id);
           MySwal.fire("Success");
         } else if (result.isDenied) {
           MySwal.fire("Cancelled");
@@ -63,7 +63,7 @@ const handleClick = () => {
                   <TableCell align="right">{survey.understanding}</TableCell>
                   <TableCell align="right">{survey.support}</TableCell>
                   <TableCell align="right">{survey.comments}</TableCell>
-                  <TableCell align="right"><Button onClick={handleClick}>Delete</Button></TableCell>
+                  <TableCell align="right"><Button onClick={()=>handleClick(survey)}>Delete</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -12,7 +12,7 @@ import Comment from '../Comment/Comment';
 import Review from '../Review/Review';
 import Success from '../Success/Success';
 import Admin from '../Admin/Admin';
-import { get } from '../../../server/routes/survey.router';
+
 
 
 

@@ -37,5 +37,21 @@ router.post('/', (req, res) => {
 })
 
 // DELETE route for /survey
+router.delete('/:id', (req, res) => {
+    let idToDelete = req.params.id
+    let sqlQuery =`
+    DELETE from "feedback"
+    WHERE "id"=$1;
+    `;
+    pool.query(sqlQuery, [idToDelete])
+    .then( results => {
+        console.log('Deleted survey from database, ', results);
+        res.sendStatus(200);
+    })
+    .catch( error => {
+        console.log('Error in deleting survey from database: ', error);
+        res.sendStatus(500);
+    })
+})
 
 module.exports = router;
