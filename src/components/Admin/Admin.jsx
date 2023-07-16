@@ -8,8 +8,35 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
-const Admin = ({surveyList}) => {
+const Admin = ({surveyList, handleDelete}) => {
+
+    // Sourcing in SweetAlert
+  const MySwal = withReactContent(Swal);
+  
+// Click handler to confirm to delete or not
+const handleClick = () => {
+    MySwal.fire({
+        title: "Do you want to confirm remove?",
+        showDenyButton: true,
+        confirmButtonText: "Yes",
+        denyButtonText: "No",
+      }).then((result) => {
+        if (result.isConfirmed) {   
+          // handleDELETE
+          handleDelete({
+            id: props.item.id,
+          });
+          console.log(survey.id);
+          MySwal.fire("Success");
+        } else if (result.isDenied) {
+          MySwal.fire("Cancelled");
+        }
+      });
+        console.log("Delete Button clicked");
+}
     
 
     return (
@@ -36,7 +63,7 @@ const Admin = ({surveyList}) => {
                   <TableCell align="right">{survey.understanding}</TableCell>
                   <TableCell align="right">{survey.support}</TableCell>
                   <TableCell align="right">{survey.comments}</TableCell>
-                  <TableCell align="right"><Button>Delete</Button></TableCell>
+                  <TableCell align="right"><Button onClick={handleClick}>Delete</Button></TableCell>
                 </TableRow>
               ))}
             </TableBody>

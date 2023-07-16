@@ -12,6 +12,7 @@ import Comment from '../Comment/Comment';
 import Review from '../Review/Review';
 import Success from '../Success/Success';
 import Admin from '../Admin/Admin';
+import { get } from '../../../server/routes/survey.router';
 
 
 
@@ -33,6 +34,22 @@ function App() {
     })
     .catch(error => {
       console.log('Error in client GET request: ', error);
+    })
+  }
+
+  // DELETE request to remove a prior survey from database
+  const handleDelete = (idToDelete) => {
+    console.log('In DELETE survey function');
+    axios({
+      method: 'DELETE',
+      url: `/survey/${idToDelete.id}`
+    })
+    .then( response => {
+      console.log('Deleted survey in database');
+      getSurveys();
+    })
+    .catch( error => {
+      console.log('Error in DELETE request: ', error);
     })
   }
 
@@ -67,7 +84,7 @@ function App() {
           <Success />
         </Route>
         <Route path="/admin">
-          <Admin surveyList={surveyList}/>
+          <Admin surveyList={surveyList} handleDelete={handleDelete} />
         </Route>
       </div>
     </Router>

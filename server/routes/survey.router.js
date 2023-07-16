@@ -36,4 +36,6 @@ router.post('/', (req, res) => {
     })
 })
 
+// DELETE route for /survey
+
 module.exports = router;
