@@ -11,12 +11,17 @@ import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import MenuItem from '@mui/material/MenuItem';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const Feeling = () => {
 
     // sourcing history to go to next page
     const history = useHistory();
     const dispatch = useDispatch();
+
+    // Sourcing sweetAlert to use
+    const MySwal = withReactContent(Swal);
 
     // Array for drop down text field to use
     const dropDown = [1, 2, 3, 4, 5]
@@ -32,7 +37,12 @@ const Feeling = () => {
     // if statement to prevent empty submission to store (field required)
     const handleNext = () => {
         if (!feelingInput) {
-            alert('Please fill out the field')
+            MySwal.fire({
+                title: 'Please submit a number from the dropdown',
+                icon: 'info',
+                timer: 1000,
+                showConfirmButton: false,
+            })
         } else {
         dispatch({
             type: 'FEELING',
@@ -62,7 +72,7 @@ const Feeling = () => {
                                 id="outlined-select-currency"
                                 select
                                 label="Select"
-                                defaultValue="1"
+                                defaultValue=""
                                 onChange={handleFeelingInput}
                                 sx={{ width: 175}}
                             >

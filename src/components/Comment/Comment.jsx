@@ -48,14 +48,16 @@ const Comment = () => {
                         <Typography variant="body2" color="text.secondary">
                             Scale of 1 to 5
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" sx={{marginBottom: 4}}>
                             with 5 being the most
                         </Typography>
                         <TextField
                             id="outlined-number"
                             label="Comment?"
                             type="text"
+                            defaultValue=''
                             onChange={handleCommentInput}
+                            sx={{ width: 500}}
                         />
                     </CardContent>
              

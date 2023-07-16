@@ -1,9 +1,7 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import SendIcon from '@mui/icons-material/Send';
@@ -13,12 +11,17 @@ import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import MenuItem from '@mui/material/MenuItem';
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const Support = () => {
 
     // sourcing history to go to next page
     const history = useHistory();
     const dispatch = useDispatch();
+
+    // Sourcing sweetAlert to use
+    const MySwal = withReactContent(Swal);
 
     // Array for drop down text to use
     const dropDown = [1, 2, 3, 4, 5]
@@ -34,7 +37,12 @@ const Support = () => {
     // if statement to prevent an empty submission to store
     const handleNext = () => {
         if (!supportInput) {
-            alert('Please fill out the field')
+            MySwal.fire({
+                title: 'Please submit a number from the dropdown',
+                icon: 'info',
+                timer: 1000,
+                showConfirmButton: false,
+            })
         } else {
         dispatch({
             type: 'SUPPORT',
@@ -64,7 +72,7 @@ const Support = () => {
                                 id="outlined-select-currency"
                                 select
                                 label="Select"
-                                defaultValue="1"
+                                defaultValue=""
                                 onChange={handleSupportInput}
                                 sx={{ width: 175}}
                             >

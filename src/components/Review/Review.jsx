@@ -50,7 +50,7 @@ const Review = () => {
         <div className="review-card">
             <Card sx={{ display: 'flex', width: '90%', flexDirection: 'column', justifyContent: 'space-between', alignContent: 'space-between', minHeight: 400, maxHeight: 500 }}>
             <Box>
-                    <Typography gutterBottom variant="h4" sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Typography gutterBottom variant="h4" sx={{ display: 'flex', justifyContent: 'center', marginTop: 3, marginBottom: 2 }}>
                         Review Your Feedback
                     </Typography>
 
