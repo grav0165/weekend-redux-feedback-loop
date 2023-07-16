@@ -45,11 +45,8 @@ const Comment = () => {
                         <Typography gutterBottom variant="h5" component="div" sx={{ display: 'flex', justifyContent: 'center', marginBottom: 4 }}>
                             Any comments you want to leave?
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                            Scale of 1 to 5
-                        </Typography>
                         <Typography variant="body2" color="text.secondary" sx={{marginBottom: 4}}>
-                            with 5 being the most
+                            Feel free to leave any comments not covered in the previous questions
                         </Typography>
                         <TextField
                             id="outlined-number"
