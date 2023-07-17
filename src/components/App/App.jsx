@@ -78,7 +78,7 @@ function App() {
           <Comment />
         </Route>
         <Route path="/review">
-          <Review />
+          <Review getSurveys={getSurveys}/>
         </Route>
         <Route path="/success">
           <Success />

@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-const Review = () => {
+const Review = ({getSurveys}) => {
 
     // useSelector to pull all data in the store that was submitted in prior pages
     const survey = useSelector(store => store.survey)
@@ -32,6 +32,7 @@ const Review = () => {
         })
         .then( response => {
             console.log('Response submitted to server: ', response);
+            getSurveys();
         })
         .catch(error => {
             console.log('Error in adding survey in client: ', error);
